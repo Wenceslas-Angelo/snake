@@ -7,11 +7,13 @@ class Snake {
     this.game = game;
     this.x = 10;
     this.y = 10;
-    this.width = 50;
-    this.height = 50;
+    this.width = 20;
+    this.height = 20;
     this.speed = 2;
     this.xVelocity = 0;
     this.yVelocity = 0;
+    this.xMove = true;
+    this.yMove = true;
   }
 
   update() {
@@ -33,18 +35,26 @@ class Snake {
    * @param {String} direction
    */
   move(direction) {
-    if (direction === "right") {
+    if (direction === "right" && this.xMove) {
       this.xVelocity = this.speed;
       this.yVelocity = 0;
-    } else if (direction === "left") {
+      this.xMove = false;
+      this.yMove = true;
+    } else if (direction === "left" && this.xMove) {
       this.xVelocity = -this.speed;
       this.yVelocity = 0;
-    } else if (direction === "up") {
+      this.xMove = false;
+      this.yMove = true;
+    } else if (direction === "up" && this.yMove) {
       this.yVelocity = -this.speed;
       this.xVelocity = 0;
-    } else if (direction === "down") {
+      this.xMove = true;
+      this.yMove = false;
+    } else if (direction === "down" && this.yMove) {
       this.yVelocity = this.speed;
       this.xVelocity = 0;
+      this.xMove = true;
+      this.yMove = false;
     }
   }
 }
