@@ -1,4 +1,17 @@
+import Game from "./JS/Game/Game.js";
+
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
 
-console.log(context);
+canvas.width = 800;
+canvas.height = 600;
+
+const game = new Game(canvas.width, canvas.height);
+function animate() {
+  context.clearRect(0, 0, canvas.width, canvas.height);
+  game.update();
+  game.draw(context);
+  requestAnimationFrame(animate);
+}
+
+animate();
