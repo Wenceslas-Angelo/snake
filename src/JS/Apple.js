@@ -1,10 +1,11 @@
 class Apple {
   constructor(game) {
     this.game = game;
-    this.width = 30;
-    this.height = 30;
-    this.x = this.game.width / 2;
-    this.y = this.game.height / 2;
+    this.width = 20;
+    this.height = 20;
+    this.x = 0;
+    this.y = 0;
+    this.update();
   }
 
   update() {
