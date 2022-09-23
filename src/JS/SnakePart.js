@@ -1,11 +1,11 @@
 class SnakePart {
-  constructor(x, y) {
+  constructor(x, y, size) {
     this.x = x;
     this.y = y;
     this.oldX = x;
     this.oldY = y;
-    this.width = 20;
-    this.height = 20;
+    this.width = size;
+    this.height = size;
   }
 
   /**

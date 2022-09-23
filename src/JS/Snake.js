@@ -13,8 +13,8 @@ class Snake {
     this.y = 0;
     this.snakeParts = [];
     this.snakePartsLength = 0;
-    this.width = 20;
-    this.height = 20;
+    this.width = this.game.size;
+    this.height = this.game.size;
     this.addSnakePart(this.x, this.y);
     this.velocity = {
       x: 0,
@@ -27,7 +27,7 @@ class Snake {
   }
 
   addSnakePart(x, y) {
-    const snakePart = new SnakePart(x, y);
+    const snakePart = new SnakePart(x, y, this.game.size);
     this.snakeParts.push(snakePart);
     this.snakePartsLength += 1;
   }

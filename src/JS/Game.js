@@ -10,7 +10,7 @@ class Game {
   constructor(width, height) {
     this.width = width;
     this.height = height;
-    this.size = 20;
+    this.size = 40;
     this.snake = new Snake(this);
     this.apple = new Apple(this);
   }

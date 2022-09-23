@@ -1,8 +1,12 @@
+import appleImg from "./../images/apple.png";
+
 class Apple {
   constructor(game) {
     this.game = game;
-    this.width = 20;
-    this.height = 20;
+    this.width = this.game.size;
+    this.height = this.game.size;
+    this.image = new Image();
+    this.image.src = appleImg;
     this.x = 0;
     this.y = 0;
     this.update();
@@ -22,8 +26,7 @@ class Apple {
    * @param {CanvasRenderingContext2D} ctx
    */
   draw(ctx) {
-    ctx.fillStyle = "green";
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
   }
 }
 
