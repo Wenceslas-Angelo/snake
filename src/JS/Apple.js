@@ -9,8 +9,12 @@ class Apple {
   }
 
   update() {
-    this.x = Math.floor(Math.random() * this.game.width - this.width);
-    this.y = Math.floor(Math.random() * this.game.height - this.height);
+    this.x =
+      Math.floor(Math.random() * (this.game.width / this.game.size)) *
+      this.game.size;
+    this.y =
+      Math.floor(Math.random() * (this.game.height / this.game.size)) *
+      this.game.size;
   }
 
   /**

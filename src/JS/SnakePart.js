@@ -19,12 +19,12 @@ class SnakePart {
 
   teleportIfOutOfMap(game) {
     if (this.x < 0) {
-      this.x = game.width;
-    } else if (this.x > game.width) {
+      this.x = game.width - game.size;
+    } else if (this.x >= game.width) {
       this.x = 0;
     } else if (this.y < 0) {
-      this.y = game.height;
-    } else if (this.y > game.height) {
+      this.y = game.height - game.size;
+    } else if (this.y >= game.height) {
       this.y = 0;
     }
   }

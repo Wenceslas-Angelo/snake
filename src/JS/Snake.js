@@ -16,13 +16,14 @@ class Snake {
     this.width = 20;
     this.height = 20;
     this.addSnakePart(this.x, this.y);
-    this.speed = 5;
     this.velocity = {
       x: 0,
       y: 0,
     };
     this.currentDirection = "";
     this.inputHandler = new InputHandler(this);
+    this.canMoveX = true;
+    this.canMoveY = true;
   }
 
   addSnakePart(x, y) {
@@ -36,43 +37,45 @@ class Snake {
     this.eatApple();
   }
 
+  setVelocity(x, y, canMoveX, canMoveY) {
+    this.velocity.x = x;
+    this.velocity.y = y;
+    this.canMoveX = canMoveX;
+    this.canMoveY = canMoveY;
+  }
+
   moveHead() {
     const head = this.snakeParts[0];
     head.oldX = head.x;
     head.oldY = head.y;
-    switch (this.currentDirection) {
-      case "right":
-        head.x += this.speed;
-        break;
-      case "left":
-        head.x -= this.speed;
-        break;
-      case "up":
-        head.y -= this.speed;
-        break;
-      case "down":
-        head.y += this.speed;
-        break;
+    if (this.currentDirection === "right" && this.canMoveX) {
+      this.setVelocity(1, 0, false, true);
+    } else if (this.currentDirection === "left" && this.canMoveX) {
+      this.setVelocity(-1, 0, false, true);
+    } else if (this.currentDirection === "up" && this.canMoveY) {
+      this.setVelocity(0, -1, true, false);
+    } else if (this.currentDirection === "down" && this.canMoveY) {
+      this.setVelocity(0, 1, true, false);
     }
-
+    head.x += this.velocity.x * this.game.size;
+    head.y += this.velocity.y * this.game.size;
     head.teleportIfOutOfMap(this.game);
   }
 
   calculateNewBlockPosition() {
     let { x, y } = this.snakeParts[this.snakePartsLength - 1];
-
     switch (this.currentDirection) {
       case "right":
-        x -= 10;
+        x -= 1;
         break;
       case "left":
-        x += 10;
+        x += 1;
         break;
       case "up":
-        y += 10;
+        y += 1;
         break;
       case "down":
-        y -= 10;
+        y -= 1;
         break;
     }
 
@@ -85,7 +88,6 @@ class Snake {
       this.game.apple.update();
       const { x, y } = this.calculateNewBlockPosition();
       this.addSnakePart(x, y);
-      console.log(this.snakeParts);
     }
   }
 

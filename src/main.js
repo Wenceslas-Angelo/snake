@@ -2,6 +2,7 @@ import Game from "./JS/Game.js";
 
 const canvas = document.querySelector("canvas");
 const context = canvas.getContext("2d");
+const FPS = 3;
 
 canvas.width = 800;
 canvas.height = 600;
@@ -12,7 +13,9 @@ function animate() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   game.update();
   game.draw(context);
-  requestAnimationFrame(animate);
+  setTimeout(() => {
+    requestAnimationFrame(animate);
+  }, 1000 / FPS);
 }
 
 animate();
