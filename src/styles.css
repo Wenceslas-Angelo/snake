@@ -19,6 +19,9 @@ body {
   text-align: center;
   margin: 20px 0 0 20px;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .score-board {
@@ -46,24 +49,13 @@ body {
   transition: 0.3s linear;
 }
 
-.btn-start {
+.btn-restart {
   color: white;
   background-color: green;
   border: 2px solid green;
 }
 
-.btn-start:hover {
-  background-color: white;
-  color: green;
-}
-
-.btn-pause {
-  color: white;
-  background-color: green;
-  border: 2px solid green;
-}
-
-.btn-pause:hover {
+.btn-restart:hover {
   background-color: white;
   color: green;
 }

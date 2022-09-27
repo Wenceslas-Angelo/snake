@@ -21,13 +21,27 @@ class Game {
     this.FPS = 2;
     this.gameOver = false;
     this.score = 0;
-    this.scoreTxt = document.querySelector(".score");
+
+    document.addEventListener("keydown", (event) => {
+      if (this.gameOver && event.key === " ") {
+        this.restartGame();
+      }
+    });
   }
 
   changeGround() {
     const groundsImg = [ground01, ground02, ground03];
     const index = Math.floor(Math.random() * groundsImg.length);
     this.groundImage.src = groundsImg[index];
+  }
+
+  restartGame() {
+    this.gameOver = false;
+    this.score = 0;
+    this.FPS = 2;
+    this.changeGround();
+    this.snake = new Snake(this);
+    this.apple = new Apple(this);
   }
 
   update() {
@@ -61,11 +75,16 @@ class Game {
    */
   draw(ctx) {
     this.drawGrid(ctx);
+    ctx.fillStyle = "gray";
+    ctx.font = "100px sans-serif";
+    ctx.fillText(`SCORE : ${this.score}`, 150, 100);
     this.snake.draw(ctx);
     this.apple.draw(ctx);
+
     if (this.gameOver) {
-      ctx.font = "100px sans-serif";
       ctx.fillText("GAME OVER", 100, this.height / 2);
+      ctx.font = "50px sans-serif";
+      ctx.fillText("TAP BACK SPACE TO RESTART", 20, this.height / 2 + 200);
     }
   }
 }

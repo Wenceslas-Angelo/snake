@@ -89,7 +89,6 @@ class Snake {
       const { x, y } = this.calculateNewBlockPosition();
       this.addSnakePart(x, y);
       this.game.score += 1;
-      this.game.scoreTxt.textContent = this.game.score;
       this.game.FPS += 1;
     }
   }
