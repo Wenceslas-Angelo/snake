@@ -13,6 +13,8 @@ class Game {
     this.size = 40;
     this.snake = new Snake(this);
     this.apple = new Apple(this);
+    this.FPS = 2;
+    this.gameOver = false;
   }
 
   update() {

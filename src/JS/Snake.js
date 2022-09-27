@@ -88,6 +88,7 @@ class Snake {
       this.game.apple.update();
       const { x, y } = this.calculateNewBlockPosition();
       this.addSnakePart(x, y);
+      this.game.FPS += 1;
     }
   }
 
@@ -100,6 +101,10 @@ class Snake {
       if (index > 0) {
         const { oldX, oldY } = this.snakeParts[index - 1];
         snakePart.setPosition(oldX, oldY);
+
+        if (checkCollision(this.snakeParts[0], snakePart)) {
+          this.game.gameOver = true;
+        }
       }
 
       snakePart.draw(ctx);
