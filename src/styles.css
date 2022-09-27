@@ -8,11 +8,67 @@
 body {
   height: 100vh;
   overflow: hidden;
-  background-color: rgb(156, 150, 150);
+  background: url("./images/bg.jpeg") center no-repeat;
+  background-size: cover;
+}
+
+.menu {
+  background-color: white;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  margin: 20px 0 0 20px;
+  height: 300px;
+}
+
+.score-board {
+  border: 2px solid black;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: black;
+  color: white;
+}
+
+.score-board .score {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.btn {
+  cursor: pointer;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: 0.3s linear;
+}
+
+.btn-start {
+  color: white;
+  background-color: green;
+  border: 2px solid green;
+}
+
+.btn-start:hover {
+  background-color: white;
+  color: green;
+}
+
+.btn-pause {
+  color: white;
+  background-color: green;
+  border: 2px solid green;
+}
+
+.btn-pause:hover {
+  background-color: white;
+  color: green;
 }
 
 canvas {
-  border: 5px solid black;
   width: 800px;
   height: 600px;
   position: absolute;
